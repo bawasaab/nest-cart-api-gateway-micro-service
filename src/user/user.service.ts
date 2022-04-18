@@ -12,24 +12,23 @@ export class UserService {
   ) {}
 
   create(createUserDto: CreateUserDto) {
-    this.userMicroServiceClient.emit('createUser', createUserDto);
+    return this.userMicroServiceClient.emit('createUser', createUserDto);
   }
 
   findAll() {
-    // return `This action returns all user`;
-    this.userMicroServiceClient.emit('findAllUser', null);
+    return this.userMicroServiceClient.send({ cmd: 'findAllUser' }, {});
   }
 
-  findOne(id: number) {
-    this.userMicroServiceClient.emit('findOneUser', id);
+  findOne(id: ObjectId) {
+    return this.userMicroServiceClient.send({ cmd: 'findOneUser' }, { id });
   }
 
   update(id: string, updateUserDto: UpdateUserDto) {
     updateUserDto.id = id;
-    this.userMicroServiceClient.emit('updateUser', updateUserDto);
+    return this.userMicroServiceClient.emit('updateUser', updateUserDto);
   }
 
   remove(id: ObjectId) {
-    this.userMicroServiceClient.emit('removeUser', id);
+    return this.userMicroServiceClient.emit('removeUser', id);
   }
 }
