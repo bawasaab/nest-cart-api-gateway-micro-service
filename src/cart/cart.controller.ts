@@ -23,7 +23,6 @@ export class CartController {
 
   @Get()
   findAll() {
-    console.log('findAll controller api-gateway');
     return this.cartService.findAll();
   }
 
@@ -34,7 +33,6 @@ export class CartController {
 
   @Patch(':id')
   update(@Param('id') id: ObjectId, @Body() updateCartDto: UpdateCartDto) {
-    console.log('cart update api-gateway contr');
     return this.cartService.update(id, updateCartDto);
   }
 
