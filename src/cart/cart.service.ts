@@ -16,7 +16,6 @@ export class CartService {
   }
 
   findAll() {
-    console.log('findAll service api-gateway');
     return this.cartMicroServiceClient.send({ cmd: 'findAllCart' }, {});
   }
 
@@ -26,7 +25,6 @@ export class CartService {
 
   update(id: ObjectId, updateCartDto: UpdateCartDto) {
     updateCartDto.id = id;
-    console.log('cart update api-gateway service', updateCartDto);
     return this.cartMicroServiceClient.emit('updateCart', updateCartDto);
   }
 
