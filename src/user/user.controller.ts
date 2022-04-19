@@ -18,7 +18,6 @@ export class UserController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log('inside user controller of api gateway');
     return this.userService.create(createUserDto);
   }
 
